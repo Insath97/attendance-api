@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.middleware.auth_middleware import JWTAuthenticationMiddleware
 from app.routes import admin_routes, auth_routes, student_routes, grade_routes, class_routes, student_assign_class_routes, attendance_routes
+from datetime import datetime
+from app.utils.security import sri_lankan_now
 
 app = FastAPI(title="School Management API", version="1.0", description="API for managing school attendance, bell systems, and other school-related operations.")
 
@@ -20,6 +22,9 @@ app = FastAPI(title="School Management API", version="1.0", description="API for
     allow_headers=["*"],
 
     ) """
+
+# add time zone
+datetime.utcnow() == sri_lankan_now()
 
 # Include the authentication routes
 app.include_router(auth_routes.router)
@@ -48,3 +53,7 @@ app.include_router(class_routes.router)
 @app.get("/")
 def home():
     return {"message": "Welcome to School Management API"}
+
+@app.get("/time")
+def get_time():
+    return {"current_time": sri_lankan_now()}
