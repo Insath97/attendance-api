@@ -8,12 +8,12 @@ from app.utils.security import sri_lankan_now
 app = FastAPI(title="School Management API", version="1.0", description="API for managing school attendance, bell systems, and other school-related operations.")
 
 # Allow only specific domains
-""" origins = [
+origins = [
     "https://yourfrontenddomain.com", 
 ] 
- """
+
 # Add JWT authentication middleware globally
-""" app.add_middleware(
+app.add_middleware(
     JWTAuthenticationMiddleware,
     CORSMiddleware,
     allow_origins=origins,  # Specify the domains
@@ -21,7 +21,7 @@ app = FastAPI(title="School Management API", version="1.0", description="API for
     allow_methods=["GET", "POST", "PUT", "DELETE"],
     allow_headers=["*"],
 
-    ) """
+    ) 
 
 # add time zone
 datetime.utcnow() == sri_lankan_now()
