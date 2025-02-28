@@ -14,7 +14,6 @@ origins = [
 
 # Add JWT authentication middleware globally
 app.add_middleware(
-    JWTAuthenticationMiddleware,
     CORSMiddleware,
     allow_origins=origins,  # Specify the domains
     allow_credentials=True,
@@ -22,6 +21,9 @@ app.add_middleware(
     allow_headers=["*"],
 
     ) 
+
+# Add JWT authentication middleware
+app.add_middleware(JWTAuthenticationMiddleware)
 
 # add time zone
 datetime.utcnow() == sri_lankan_now()
