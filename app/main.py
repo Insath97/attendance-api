@@ -9,13 +9,14 @@ app = FastAPI(title="School Management API", version="1.0", description="API for
 
 # Allow only specific domains
 origins = [
+    "http://localhost:3000",
     "https://yourfrontenddomain.com", 
 ] 
 
 # Add JWT authentication middleware globally
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Specify the domains
+    allow_origins=origins,  # Specify the domains
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
