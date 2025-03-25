@@ -16,6 +16,7 @@ class ClassUpdateSchema(BaseModel):
     
 # response schema
 class ClassResponseSchema(BaseModel):
+    id: str
     grade_id : str
     section_name: str
     description : Optional[str]
